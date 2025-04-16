@@ -1,0 +1,65 @@
+# Project Overview
+
+## Concept
+The Art Auction Platform is a web application designed to facilitate online art auctions, providing a seamless experience for artists, collectors, and enthusiasts. The platform allows users to browse and bid on artworks, track auction progress, and manage their collections.
+
+## Selected Product
+The selected product for this project is a Next.js application, utilizing React as the frontend framework and TypeScript as the primary programming language.
+
+## Features
+The platform features include:
+
+* User authentication and authorization
+* Artwork browsing and filtering
+* Auction creation and management
+* Real-time bidding and auction tracking
+* User profile and collection management
+* API integration for payment processing and notification services
+
+# Running the Project Locally
+
+## Prerequisites
+To run the project locally, ensure you have the following installed:
+
+* Node.js (version 14 or higher)
+* npm (version 6 or higher)
+* TypeScript (version 4 or higher)
+
+## Setup
+1. Clone the repository using `git clone https://github.com/zane-a-bit/art-auction-platform.git`
+2. Navigate to the project directory using `cd art-auction-platform`
+3. Install dependencies using `npm install`
+4. Start the development server using `npm run dev`
+
+## Environment Variables
+Create a `.env` file in the project root and add the following environment variables:
+
+
+# ES6+ Features Utilization
+
+## Overview
+The project utilizes various ES6+ features to improve code readability, maintainability, and performance.
+
+## Features Used
+* **Arrow Functions**: used for concise function definitions and improved readability
+* **Async/Await**: used for asynchronous programming and error handling
+* **Destructuring**: used for efficient object and array manipulation
+* **Spread Operator**: used for array and object merging
+* **TypeScript**: used for static type checking and improved code maintainability
+
+# DTO Patterns for API Communication and Token Management
+
+## Overview
+The project uses DTO (Data Transfer Object) patterns to standardize API communication and token management.
+
+## DTOs Used
+* **ArtworkDTO**: represents an artwork object, containing properties such as `id`, `title`, `artist`, and `price`
+* **UserDTO**: represents a user object, containing properties such as `id`, `username`, and `email`
+* **TokenDTO**: represents a token object, containing properties such as `token` and `expiresIn`
+
+## API Communication
+The project uses DTOs to standardize API requests and responses, ensuring consistent data structures and improved error handling.
+
+## Token Management
+The project uses DTOs to manage tokens, ensuring secure and efficient authentication and authorization processes.
+
