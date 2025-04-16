@@ -38,7 +38,7 @@ import { Separator } from "@/components/ui/separator"
 export default function BrowsePage() {
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [priceRange, setPriceRange] = useState([0, 5000])
-  const [activeFilters, setActiveFilters] = useState<string[]>([])
+  const [activeFilters, setActiveFilters] = useState([])
   const [sortOption, setSortOption] = useState("ending-soon")
 
   // Mock data for artworks
@@ -187,7 +187,7 @@ export default function BrowsePage() {
     { id: "photography", label: "Photography" },
   ]
 
-  const toggleFilter = (filter: string) => {
+  const toggleFilter = (filter) => {
     if (activeFilters.includes(filter)) {
       setActiveFilters(activeFilters.filter(f => f !== filter))
     } else {

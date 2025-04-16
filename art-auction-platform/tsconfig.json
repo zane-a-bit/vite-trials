@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "components/auction-calendar.jsx", "app/auctions/page.jsx", "app/auth/signin/page.jsx", "app/artwork/[id]/page.jsx"  ],
+, "components/auction-calendar.jsx", "app/auctions/page.jsx", "app/auth/signin/page.jsx", "app/artwork/[id]/page.jsx", "app/browse/page.jsx", "app/auth/signup/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
