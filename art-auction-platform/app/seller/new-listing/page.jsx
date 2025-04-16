@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -21,10 +19,10 @@ export default function NewListing() {
   const router = useRouter()
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState([])
   const [listingType, setListingType] = useState("auction")
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       // In a real app, you would upload these to a server
       // Here we're just creating object URLs for preview
@@ -33,13 +31,12 @@ export default function NewListing() {
     }
   }
 
-  const removeImage = (index: number) => {
+  const removeImage = (index) => {
     setImages((prev) => prev.filter((_, i) => i !== index))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-
     if (images.length === 0) {
       toast({
         title: "Images required",
@@ -48,9 +45,7 @@ export default function NewListing() {
       })
       return
     }
-
     setIsSubmitting(true)
-
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false)
@@ -73,13 +68,11 @@ export default function NewListing() {
           Back to dashboard
         </Link>
       </div>
-
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Create New Listing</h1>
           <p className="text-muted-foreground">Add details about your artwork to list it for sale</p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Artwork Images */}
           <div className="space-y-3">
@@ -87,7 +80,6 @@ export default function NewListing() {
             <p className="text-sm text-muted-foreground">
               Upload high-quality images of your artwork. The first image will be used as the main image.
             </p>
-
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
               {images.map((image, index) => (
                 <div key={index} className="relative aspect-square rounded-md overflow-hidden border">
@@ -112,7 +104,6 @@ export default function NewListing() {
                   )}
                 </div>
               ))}
-
               {images.length < 5 && (
                 <div className="aspect-square rounded-md border border-dashed flex flex-col items-center justify-center p-4">
                   <input
@@ -132,18 +123,14 @@ export default function NewListing() {
               )}
             </div>
           </div>
-
           <Separator />
-
           {/* Artwork Details */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Artwork Details</h2>
-
             <div className="space-y-3">
               <Label htmlFor="title">Title</Label>
               <Input id="title" placeholder="e.g., Abstract Harmony" required />
             </div>
-
             <div className="space-y-3">
               <Label htmlFor="description">Description</Label>
               <Textarea
@@ -153,7 +140,6 @@ export default function NewListing() {
                 required
               />
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-3">
                 <Label htmlFor="medium">Medium</Label>
@@ -171,7 +157,6 @@ export default function NewListing() {
                   </SelectContent>
                 </Select>
               </div>
-
               <div className="space-y-3">
                 <Label htmlFor="category">Category</Label>
                 <Select defaultValue="abstract">
@@ -188,23 +173,19 @@ export default function NewListing() {
                   </SelectContent>
                 </Select>
               </div>
-
               <div className="space-y-3">
                 <Label htmlFor="width">Width (inches)</Label>
                 <Input id="width" type="number" min="0" step="0.1" required />
               </div>
-
               <div className="space-y-3">
                 <Label htmlFor="height">Height (inches)</Label>
                 <Input id="height" type="number" min="0" step="0.1" required />
               </div>
-
               <div className="space-y-3">
                 <Label htmlFor="year">Year Created</Label>
                 <Input id="year" type="number" max={new Date().getFullYear()} required />
                 <p>If the year is before Christ (BC), please enter a negative number.</p>
               </div>
-
               <div className="space-y-3">
                 <Label htmlFor="condition">Condition</Label>
                 <Select defaultValue="excellent">
@@ -220,7 +201,6 @@ export default function NewListing() {
                 </Select>
               </div>
             </div>
-
             <div className="flex flex-col gap-2">
               <div className="flex items-center space-x-2">
                 <Switch id="framed" />
@@ -232,13 +212,10 @@ export default function NewListing() {
               </div>
             </div>
           </div>
-
           <Separator />
-
           {/* Listing Options */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Listing Options</h2>
-
             <div className="space-y-3">
               <Label>Listing Type</Label>
               <RadioGroup
@@ -261,7 +238,6 @@ export default function NewListing() {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card className={`cursor-pointer ${listingType === "fixed" ? "border-primary" : ""}`}>
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-2">
@@ -277,7 +253,6 @@ export default function NewListing() {
                 </Card>
               </RadioGroup>
             </div>
-
             {listingType === "auction" ? (
               <div className="space-y-4 pt-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -285,14 +260,12 @@ export default function NewListing() {
                     <Label htmlFor="starting-bid">Starting Bid ($)</Label>
                     <Input id="starting-bid" type="number" min="1" step="1" required />
                   </div>
-
                   <div className="space-y-3">
                     <Label htmlFor="reserve-price">Reserve Price ($) (Optional)</Label>
                     <Input id="reserve-price" type="number" min="1" step="1" />
                     <p className="text-xs text-muted-foreground">Minimum price you're willing to accept</p>
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-3">
                     <Label htmlFor="bid-increment">Bid Increment ($)</Label>
@@ -309,7 +282,6 @@ export default function NewListing() {
                       </SelectContent>
                     </Select>
                   </div>
-
                   <div className="space-y-3">
                     <Label htmlFor="duration">Auction Duration</Label>
                     <Select defaultValue="7">
@@ -334,18 +306,14 @@ export default function NewListing() {
               </div>
             )}
           </div>
-
           <Separator />
-
           {/* Shipping */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Shipping</h2>
-
             <div className="space-y-3">
               <Label htmlFor="shipping-from">Shipping From</Label>
               <Input id="shipping-from" placeholder="e.g., New York, NY" required />
             </div>
-
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <Label htmlFor="shipping-options">Shipping Options</Label>
@@ -353,13 +321,11 @@ export default function NewListing() {
                   <Plus className="h-4 w-4" /> Add Option
                 </Button>
               </div>
-
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <Switch id="worldwide" defaultChecked />
                   <Label htmlFor="worldwide">Ship worldwide</Label>
                 </div>
-
                 <div className="flex items-center space-x-2">
                   <Switch id="local-pickup" />
                   <Label htmlFor="local-pickup">Offer local pickup</Label>
@@ -367,7 +333,6 @@ export default function NewListing() {
               </div>
             </div>
           </div>
-
           <div className="bg-muted p-4 rounded-lg flex items-start gap-3">
             <Info className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
             <div className="text-sm">
@@ -378,7 +343,6 @@ export default function NewListing() {
               </p>
             </div>
           </div>
-
           <div className="flex justify-end gap-3 pt-4">
             <Button type="button" variant="outline" onClick={() => router.push("/seller/dashboard")}>
               Save as Draft

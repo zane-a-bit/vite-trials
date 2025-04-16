@@ -1,10 +1,8 @@
+"use client"
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
-interface BidHistoryProps {
-  artworkId: number
-}
-
-export default function BidHistory({ artworkId }: BidHistoryProps) {
+export default function BidHistory({ artworkId }) {
   // This would normally fetch bid history based on the artwork ID
   const bids = [
     {

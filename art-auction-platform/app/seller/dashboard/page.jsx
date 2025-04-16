@@ -21,8 +21,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import SellerStats from "@/components/seller-stats"
 
 export default function SellerDashboard() {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-
+  const [viewMode, setViewMode] = useState("grid")
   // This would normally be fetched from an API
   const listings = [
     {
@@ -67,7 +66,7 @@ export default function SellerDashboard() {
     },
   ]
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status) => {
     switch (status) {
       case "active":
         return <Badge className="bg-green-500">Active</Badge>
@@ -83,7 +82,7 @@ export default function SellerDashboard() {
   }
 
   return (
-    <div className="container py-8" style={{margin: "auto"}}>
+    <div className="container py-8" style={{ margin: "auto" }}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold">Seller Dashboard</h1>
@@ -96,7 +95,6 @@ export default function SellerDashboard() {
           </Button>
         </Link>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -139,7 +137,6 @@ export default function SellerDashboard() {
           </CardContent>
         </Card>
       </div>
-
       <Tabs defaultValue="all" className="mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <TabsList>
@@ -184,7 +181,6 @@ export default function SellerDashboard() {
             </div>
           </div>
         </div>
-
         <TabsContent value="all" className="m-0">
           {viewMode === "grid" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -292,7 +288,6 @@ export default function SellerDashboard() {
             </div>
           )}
         </TabsContent>
-
         <TabsContent value="active" className="m-0">
           <div
             className={
@@ -302,7 +297,6 @@ export default function SellerDashboard() {
             {listings
               .filter((l) => l.status === "active")
               .map((listing) => (
-                // Similar structure as above, filtered for active listings
                 <Card key={listing.id} className="overflow-hidden">
                   <div className="aspect-[3/4] relative">
                     <img
@@ -333,10 +327,8 @@ export default function SellerDashboard() {
               ))}
           </div>
         </TabsContent>
-
         {/* Similar TabsContent for "sold" and "drafts" tabs */}
       </Tabs>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">
           <CardHeader>

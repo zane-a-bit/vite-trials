@@ -1,14 +1,16 @@
-import Link from "next/link";
-import { ArrowRight, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import FeaturedArtworks from "@/components/featured-artworks";
-import ArtCategories from "@/components/art-categories";
-import UpcomingAuctions from "@/components/upcoming-auctions";
+"use client"
+
+import Link from "next/link"
+import { ArrowRight, Search } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import FeaturedArtworks from "@/components/featured-artworks"
+import ArtCategories from "@/components/art-categories"
+import UpcomingAuctions from "@/components/upcoming-auctions"
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen" style={{margin: "auto"}}>
+    <div className="flex flex-col min-h-screen" style={{ margin: "auto" }}>
       <header className="border-b">
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="text-2xl font-bold">
@@ -61,8 +63,7 @@ export default function Home() {
                   Discover and Collect Exceptional Artworks
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Bid on unique pieces from emerging and established artists
-                  around the world.
+                  Bid on unique pieces from emerging and established artists around the world.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <Link href="/browse">
@@ -101,9 +102,8 @@ export default function Home() {
             <div className="text-center space-y-4 max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold">Join Our Art Community</h2>
               <p className="text-muted-foreground">
-                Whether you're an artist looking to showcase your work or a
-                collector seeking your next masterpiece, ArtBid connects you
-                with a global community of art enthusiasts.
+                Whether you're an artist looking to showcase your work or a collector seeking your next masterpiece,
+                ArtBid connects you with a global community of art enthusiasts.
               </p>
               <div className="pt-4">
                 <Link href="/auth/signup">
@@ -217,5 +217,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
 }

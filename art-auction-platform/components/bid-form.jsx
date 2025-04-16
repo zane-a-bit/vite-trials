@@ -1,23 +1,16 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 
-interface BidFormProps {
-  currentBid: number
-  bidIncrement: number
-}
-
-export default function BidForm({ currentBid, bidIncrement }: BidFormProps) {
+export default function BidForm({ currentBid, bidIncrement }) {
   const { toast } = useToast()
   const [bidAmount, setBidAmount] = useState(currentBid + bidIncrement)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleBidSubmit = (e: React.FormEvent) => {
+  const handleBidSubmit = (e) => {
     e.preventDefault()
 
     if (bidAmount < currentBid + bidIncrement) {

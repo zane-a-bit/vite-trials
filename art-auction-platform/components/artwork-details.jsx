@@ -1,18 +1,8 @@
+"use client"
+
 import { Check } from "lucide-react"
 
-interface ArtworkDetailsProps {
-  artwork: {
-    description: string
-    medium: string
-    dimensions: string
-    year: number
-    condition: string
-    framed: boolean
-    certificate: boolean
-  }
-}
-
-export default function ArtworkDetails({ artwork }: ArtworkDetailsProps) {
+export default function ArtworkDetails({ artwork }) {
   return (
     <div className="space-y-4">
       <p>{artwork.description}</p>
