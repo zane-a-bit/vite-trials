@@ -10,7 +10,7 @@ import UpcomingAuctions from "@/components/upcoming-auctions"
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen" style={{ margin: "auto" }}>
+    <div className="flex flex-col min-h-screen items-center justify-center">
       <header className="border-b">
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="text-2xl font-bold">

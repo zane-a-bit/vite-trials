@@ -205,7 +205,7 @@ export default function BrowsePage() {
   const filteredArtworks = artworks
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 mx-auto">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <h1 className="text-3xl font-bold">Browse Artworks</h1>

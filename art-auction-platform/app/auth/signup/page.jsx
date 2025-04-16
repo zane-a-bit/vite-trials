@@ -29,7 +29,7 @@ export default function SignUp() {
   }
 
   return (
-    <div className="container max-w-md py-12">
+    <div className="container max-w-md py-12 mx-auto">
       <div className="mb-8">
         <Link
           href="/"

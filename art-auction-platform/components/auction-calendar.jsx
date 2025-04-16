@@ -7,28 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 
-interface Auction {
-  id: number
-  title: string
-  date: string
-  time: string
-  status: "upcoming" | "live" | "ended"
-  image?: string
-  [key: string]: any
-}
-
-interface AuctionCalendarProps {
-  auctions: Auction[]
-}
-
-interface CalendarDay {
-  day: number | null
-  isCurrentMonth: boolean
-}
-
-export default function AuctionCalendar({ auctions }: AuctionCalendarProps) {
-  const [currentMonth, setCurrentMonth] = useState<number>(3) // April (0-indexed)
-  const [currentYear, setCurrentYear] = useState<number>(2025)
+export default function AuctionCalendar({ auctions }) {
+  const [currentMonth, setCurrentMonth] = useState(3) // April (0-indexed)
+  const [currentYear, setCurrentYear] = useState(2025)
 
   const monthNames = [
     "January",
@@ -46,12 +27,12 @@ export default function AuctionCalendar({ auctions }: AuctionCalendarProps) {
   ]
 
   // Get days in month
-  const getDaysInMonth = (year: number, month: number): number => {
+  const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate()
   }
 
   // Get day of week for first day of month (0 = Sunday, 1 = Monday, etc.)
-  const getFirstDayOfMonth = (year: number, month: number): number => {
+  const getFirstDayOfMonth = (year, month) => {
     return new Date(year, month, 1).getDay()
   }
 
@@ -59,7 +40,7 @@ export default function AuctionCalendar({ auctions }: AuctionCalendarProps) {
   const firstDayOfMonth = getFirstDayOfMonth(currentYear, currentMonth)
 
   // Create calendar days array
-  const calendarDays: CalendarDay[] = []
+  const calendarDays = []
 
   // Add empty cells for days before the first day of the month
   for (let i = 0; i < firstDayOfMonth; i++) {
@@ -72,13 +53,13 @@ export default function AuctionCalendar({ auctions }: AuctionCalendarProps) {
   }
 
   // Parse auction dates to find which days have auctions
-  const auctionsByDay: { [key: number]: Auction[] } = {}
+  const auctionsByDay = {}
 
   auctions.forEach((auction) => {
     const dateParts = auction.date.split(" ")
     const month = monthNames.findIndex((m) => m.toLowerCase() === dateParts[0].toLowerCase())
-    const day = Number.parseInt(dateParts[1].replace(",", ""))
-    const year = Number.parseInt(dateParts[2])
+    const day = parseInt(dateParts[1].replace(",", ""))
+    const year = parseInt(dateParts[2])
 
     if (month === currentMonth && year === currentYear) {
       if (!auctionsByDay[day]) {
@@ -163,4 +144,3 @@ export default function AuctionCalendar({ auctions }: AuctionCalendarProps) {
     </div>
   )
 }
-
